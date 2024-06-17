@@ -51,6 +51,13 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+    ".psqlrc".text = ''
+      \set QUIET ON
+      \pset null 'NULL'
+      \timing
+      \set COMP_KEYWORD_CASE upper
+      \set QUIET OFF
+    '';
   };
 
   # Home Manager can also manage your environment variables through
