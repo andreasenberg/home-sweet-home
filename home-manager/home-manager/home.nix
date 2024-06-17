@@ -17,7 +17,9 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
+  home.packages = with pkgs; [
+    jq
+
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -73,4 +75,25 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  programs.direnv.enable = true;
+  programs.git = {
+    enable = true;
+    aliases = {
+      co = "checkout";
+      br = "branch";
+      st = "status";
+      cmt = "commit";
+      unstage = "restore --staged --";
+      recent = "!git branch --sort=-committerdate | head -n10";
+    };
+
+    extraConfig = {
+      pull.ff = true;
+      pull.rebase = true;
+
+      # Show latest active branch at the top
+      branch.sort = "-committerdate";
+    };
+  };
+  programs.helix.enable = true;
 }
