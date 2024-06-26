@@ -78,6 +78,7 @@
   #
   home.sessionVariables = {
     # EDITOR = "emacs";
+    LANG = "en_US.UTF-8";
   };
 
   # Let Home Manager install and manage itself.
