@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Find the path to the fish shell
+FISH_PATH=$(which fish)
+
+# Check if fish is installed
+if [ -z "$FISH_PATH" ]; then
+    echo "Fish shell is not installed. Please install fish and try again."
+    exit 1
+fi
+
+# Check if the fish shell path is already in /etc/shells
+if ! grep -Fxq "$FISH_PATH" /etc/shells; then
+    # Append the fish shell path to /etc/shells using tee
+    echo "$FISH_PATH" | sudo tee -a /etc/shells > /dev/null
+    echo "Added $FISH_PATH to /etc/shells."
+else
+    echo "$FISH_PATH is already in /etc/shells."
+fi
+
+# Change the current user's shell to fish
+chsh -s "$FISH_PATH"
+
+# Verify and inform the user
+if [ $? -eq 0 ]; then
+    echo "Shell changed to $FISH_PATH. Please restart your terminal session."
+else
+    echo "Failed to change the shell."
+    exit 1
+fi
