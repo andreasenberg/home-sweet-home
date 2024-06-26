@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -103,5 +103,35 @@
       branch.sort = "-committerdate";
     };
   };
-  programs.helix.enable = true;
+
+  programs.fish = {
+    enable = true;
+
+    loginShellInit = ''
+      # This is needed to workaround the PATH being set in the wrong order.
+      # https://github.com/LnL7/nix-darwin/issues/122#issuecomment-1030877541
+      fish_add_path --move --prepend --path $HOME/.nix-profile/bin /run/wrappers/bin /etc/profiles/per-user/$USER/bin /nix/var/nix/profiles/default/bin /run/current-system/sw/bin
+
+      set -g fish_greeting
+      #set __done_min_cmd_duration 2000
+    '';
+    interactiveShellInit = lib.concatStringsSep "\n" (map builtins.readFile [
+      #./fish/prompt.fish
+      ./fish/abbr.fish
+      ./fish/homebrew.fish
+      #(pkgs.fetchurl {
+      #  url = "https://iterm2.com/shell_integration/fish";
+      #  hash = "sha256-tdn4z0tIc0nC5nApGwT7GYbiY91OTA4hNXZDDQ6g9qU=";
+      #})
+    ]);
+    plugins = with pkgs.fishPlugins; [
+      #{
+      #  name = "done";
+      #  src = done.src;
+      #}
+      #{name = "grc"; src = grc.src;}
+    ];
+  };
+
+    programs.helix.enable = true;
 }
