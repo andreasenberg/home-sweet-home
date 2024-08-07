@@ -133,5 +133,20 @@
     ];
   };
 
-    programs.helix.enable = true;
+  programs.helix = {
+    enable = true;
+    settings = {
+      theme = "molokai";
+      editor = {
+        bufferline = "multiple";
+        color-modes = true;
+        file-picker.hidden = false;
+        cursor-shape = {
+          insert = "bar";
+          normal = "block";
+          select = "underline";
+        };
+      };
+    };
+  };
 }
