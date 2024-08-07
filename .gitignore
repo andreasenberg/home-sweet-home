@@ -161,3 +161,4 @@ cython_debug/
 
 # Ignore output from home-manager
 home-manager/result
+home-manager/fish/result
