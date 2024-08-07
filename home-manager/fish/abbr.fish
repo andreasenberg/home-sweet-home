@@ -24,5 +24,3 @@ abbr --add wip git add --all \; git commit -m WIP -n
 abbr --add cd.. cd ..
 abbr --add cd... cd ../..
 abbr --add cd.... cd ../../..
-
-abbr --add k kubectl

@@ -118,6 +118,7 @@
     interactiveShellInit = lib.concatStringsSep "\n" (map builtins.readFile [
       #./fish/prompt.fish
       ./fish/abbr.fish
+      ./fish/project-abbr.fish
       ./fish/homebrew.fish
       #(pkgs.fetchurl {
       #  url = "https://iterm2.com/shell_integration/fish";
