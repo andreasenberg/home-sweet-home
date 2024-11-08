@@ -1,4 +1,9 @@
-{ pkgs, inputs, username, ... }: {
+{
+  pkgs,
+  inputs,
+  username,
+  ...
+}: {
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   #environment.systemPackages =
@@ -12,7 +17,7 @@
 
   # Necessary for using flakes on this system.
   nix.settings = {
-    trusted-users = [ "root" "${username}" ];
+    trusted-users = ["root" "${username}"];
     experimental-features = "nix-command flakes";
   };
   # Enable alternative shell support in nix-darwin.

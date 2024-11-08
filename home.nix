@@ -1,5 +1,10 @@
-{ config, pkgs, lib, username, ... }:
-let
+{
+  config,
+  pkgs,
+  lib,
+  username,
+  ...
+}: let
   localAbbreviationsPath = "/Users/${username}/.config/fish/local-abbr.fish";
   fishAbbreviations = lib.concatStringsSep "\n" (map builtins.readFile [
     # tracked abbreviations
@@ -11,8 +16,7 @@ let
     #  hash = "sha256-tdn4z0tIc0nC5nApGwT7GYbiY91OTA4hNXZDDQ6g9qU=";
     #})
   ]);
-in
-{
+in {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   #home.username = "aenberg";

@@ -11,11 +11,14 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nix-darwin, home-manager, nixpkgs }:
-  let
+  outputs = inputs @ {
+    self,
+    nix-darwin,
+    home-manager,
+    nixpkgs,
+  }: let
     username = "aenberg"; #builtins.getEnv "USER";
-  in
-  {
+  in {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#andreas
     darwinConfigurations."andreas" = nix-darwin.lib.darwinSystem {
@@ -25,7 +28,12 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.${username} = { pkgs, config, lib, ... }:
+          home-manager.users.${username} = {
+            pkgs,
+            config,
+            lib,
+            ...
+          }:
             import ./home.nix {
               inherit pkgs config lib username;
             };
