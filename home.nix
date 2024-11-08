@@ -31,6 +31,7 @@ in
   # environment.
   home.packages = with pkgs; [
     jq
+    htop
     # coreutils
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
