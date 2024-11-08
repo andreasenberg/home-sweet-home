@@ -16,11 +16,33 @@
     nix-darwin,
     home-manager,
     nixpkgs,
-  }: let
-    username = "aenberg"; #builtins.getEnv "USER";
-  in {
+  }: {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#andreas
+    darwinConfigurations."aenberg" = nix-darwin.lib.darwinSystem {
+      modules = [
+        ./darwin.nix
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users."aenberg" = {
+            pkgs,
+            config,
+            lib,
+            ...
+          }:
+            import ./home.nix {
+              inherit pkgs config lib;
+              username = "aenberg";
+            };
+        }
+      ];
+      specialArgs = {
+        inherit inputs;
+        username = "aenberg";
+      };
+    };
     darwinConfigurations."andreas" = nix-darwin.lib.darwinSystem {
       modules = [
         ./darwin.nix
@@ -28,23 +50,23 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.${username} = {
+          home-manager.users."andreas" = {
             pkgs,
             config,
             lib,
             ...
           }:
             import ./home.nix {
-              inherit pkgs config lib username;
+              inherit pkgs config lib;
+              username = "andreas";
             };
         }
       ];
       specialArgs = {
         inherit inputs;
-        inherit username;
+        username = "andreas";
       };
     };
-
     # Expose the package set, including overlays, for convenience.
     darwinPackages = self.darwinConfigurations."andreas".pkgs;
   };
