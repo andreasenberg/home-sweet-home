@@ -32,6 +32,8 @@ in
   home.packages = with pkgs; [
     jq
     htop
+    curl
+    alejandra # Nix code formatter
     # coreutils
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
