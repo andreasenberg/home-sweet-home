@@ -1,10 +1,22 @@
-{ config, pkgs, lib, ... }:
-
+{ config, pkgs, lib, username, ... }:
+let
+  localAbbreviationsPath = "/Users/${username}/.config/fish/local-abbr.fish";
+  fishAbbreviations = lib.concatStringsSep "\n" (map builtins.readFile [
+    # tracked abbreviations
+    #./fish/prompt.fish
+    ./fish/abbr.fish
+    ./fish/homebrew.fish
+    #(pkgs.fetchurl {
+    #  url = "https://iterm2.com/shell_integration/fish";
+    #  hash = "sha256-tdn4z0tIc0nC5nApGwT7GYbiY91OTA4hNXZDDQ6g9qU=";
+    #})
+  ]);
+in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "aenberg";
-  home.homeDirectory = "/Users/aenberg";
+  #home.username = "aenberg";
+  #home.homeDirectory = "/Users/aenberg";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -19,7 +31,7 @@
   # environment.
   home.packages = with pkgs; [
     jq
-
+    # coreutils
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -99,6 +111,8 @@
       pull.ff = true;
       pull.rebase = true;
 
+      init.defaultBranch = "main";
+
       # Show latest active branch at the top
       branch.sort = "-committerdate";
     };
@@ -115,16 +129,15 @@
       set -g fish_greeting
       #set __done_min_cmd_duration 2000
     '';
-    interactiveShellInit = lib.concatStringsSep "\n" (map builtins.readFile [
-      #./fish/prompt.fish
-      ./fish/abbr.fish
-      ./fish/project-abbr.fish
-      ./fish/homebrew.fish
-      #(pkgs.fetchurl {
-      #  url = "https://iterm2.com/shell_integration/fish";
-      #  hash = "sha256-tdn4z0tIc0nC5nApGwT7GYbiY91OTA4hNXZDDQ6g9qU=";
-      #})
-    ]);
+    interactiveShellInit = ''
+      # Base abbr config
+      ${fishAbbreviations}
+
+      # Source local config if it exists
+      if test -f "${localAbbreviationsPath}"
+        source "${localAbbreviationsPath}"
+      end
+    '';
     plugins = with pkgs.fishPlugins; [
       #{
       #  name = "done";
