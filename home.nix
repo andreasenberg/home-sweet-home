@@ -37,7 +37,7 @@ in {
     jq
     htop
     curl
-    alejandra # Nix code formatter
+    nixfmt-rfc-style
     # coreutils
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
