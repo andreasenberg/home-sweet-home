@@ -4,19 +4,23 @@
   lib,
   username,
   ...
-}: let
+}:
+let
   localAbbreviationsPath = "/Users/${username}/.config/fish/local-abbr.fish";
-  fishAbbreviations = lib.concatStringsSep "\n" (map builtins.readFile [
-    # tracked abbreviations
-    #./fish/prompt.fish
-    ./fish/abbr.fish
-    ./fish/homebrew.fish
-    #(pkgs.fetchurl {
-    #  url = "https://iterm2.com/shell_integration/fish";
-    #  hash = "sha256-tdn4z0tIc0nC5nApGwT7GYbiY91OTA4hNXZDDQ6g9qU=";
-    #})
-  ]);
-in {
+  fishAbbreviations = lib.concatStringsSep "\n" (
+    map builtins.readFile [
+      # tracked abbreviations
+      #./fish/prompt.fish
+      ./fish/abbr.fish
+      ./fish/homebrew.fish
+      #(pkgs.fetchurl {
+      #  url = "https://iterm2.com/shell_integration/fish";
+      #  hash = "sha256-tdn4z0tIc0nC5nApGwT7GYbiY91OTA4hNXZDDQ6g9qU=";
+      #})
+    ]
+  );
+in
+{
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   #home.username = "aenberg";
@@ -55,7 +59,7 @@ in {
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-    (pkgs.runCommand "all-the-pythons" {} ''
+    (pkgs.runCommand "all-the-pythons" { } ''
       mkdir -p $out/bin
       ln -s ${pkgs.python312}/bin/python $out/bin/python3
       ln -s ${pkgs.python312}/bin/python $out/bin/python

@@ -11,63 +11,68 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs @ {
-    self,
-    nix-darwin,
-    home-manager,
-    nixpkgs,
-  }: {
-    # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#andreas
-    darwinConfigurations."aenberg" = nix-darwin.lib.darwinSystem {
-      modules = [
-        ./darwin.nix
-        home-manager.darwinModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users."aenberg" = {
-            pkgs,
-            config,
-            lib,
-            ...
-          }:
-            import ./home.nix {
-              inherit pkgs config lib;
-              username = "aenberg";
-            };
-        }
-      ];
-      specialArgs = {
-        inherit inputs;
-        username = "aenberg";
+  outputs =
+    inputs@{
+      self,
+      nix-darwin,
+      home-manager,
+      nixpkgs,
+    }:
+    {
+      # Build darwin flake using:
+      # $ darwin-rebuild build --flake .#andreas
+      darwinConfigurations."aenberg" = nix-darwin.lib.darwinSystem {
+        modules = [
+          ./darwin.nix
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users."aenberg" =
+              {
+                pkgs,
+                config,
+                lib,
+                ...
+              }:
+              import ./home.nix {
+                inherit pkgs config lib;
+                username = "aenberg";
+              };
+          }
+        ];
+        specialArgs = {
+          inherit inputs;
+          username = "aenberg";
+        };
       };
-    };
-    darwinConfigurations."andreas" = nix-darwin.lib.darwinSystem {
-      modules = [
-        ./darwin.nix
-        home-manager.darwinModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users."andreas" = {
-            pkgs,
-            config,
-            lib,
-            ...
-          }:
-            import ./home.nix {
-              inherit pkgs config lib;
-              username = "andreas";
-            };
-        }
-      ];
-      specialArgs = {
-        inherit inputs;
-        username = "andreas";
+      darwinConfigurations."andreas" = nix-darwin.lib.darwinSystem {
+        modules = [
+          ./darwin.nix
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users."andreas" =
+              {
+                pkgs,
+                config,
+                lib,
+                ...
+              }:
+              import ./home.nix {
+                inherit pkgs config lib;
+                username = "andreas";
+              };
+          }
+        ];
+        specialArgs = {
+          inherit inputs;
+          username = "andreas";
+        };
       };
+      # Expose the package set, including overlays, for convenience.
+      aenbergDarwinPackages = self.darwinConfigurations."aenberg".pkgs;
+      andreasDarwinPackages = self.darwinConfigurations."andreas".pkgs;
     };
-    # Expose the package set, including overlays, for convenience.
-    darwinPackages = self.darwinConfigurations."andreas".pkgs;
-  };
 }
