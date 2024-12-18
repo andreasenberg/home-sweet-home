@@ -55,6 +55,15 @@ in {
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+    (pkgs.runCommand "all-the-pythons" {} ''
+      mkdir -p $out/bin
+      ln -s ${pkgs.python312}/bin/python $out/bin/python3
+      ln -s ${pkgs.python312}/bin/python $out/bin/python
+
+      ln -s ${pkgs.python311}/bin/python $out/bin/python3.11
+      ln -s ${pkgs.python312}/bin/python $out/bin/python3.12
+      ln -s ${pkgs.python313}/bin/python $out/bin/python3.13
+    '')
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
