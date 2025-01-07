@@ -16,6 +16,13 @@
   services.nix-daemon.enable = true;
   # nix.package = pkgs.nix;
 
+  # Enable a linux builder to build linux images on Mac OS
+  nix.linux-builder = {
+    enable = true;
+    ephemeral = true; # wipe the builder’s filesystem on every restart
+    config.virtualisation.cores = 6;
+  };
+
   # Necessary for using flakes on this system.
   nix.settings = {
     trusted-users = [
