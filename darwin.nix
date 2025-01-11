@@ -66,4 +66,15 @@
     name = "${username}";
     home = "/Users/${username}";
   };
+
+  # Homebrew
+  homebrew = {
+    enable = true;
+
+    casks = [
+      "iterm2"
+      "spotify"
+      "visual-studio-code"
+    ];
+  };
 }
