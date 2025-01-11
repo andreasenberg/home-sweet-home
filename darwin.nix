@@ -40,6 +40,8 @@
   system.keyboard.enableKeyMapping = true;
   system.keyboard.remapCapsLockToControl = true;
 
+  security.pam.enableSudoTouchIdAuth = true;
+
   system.defaults = {
     dock = {
       autohide = true;
