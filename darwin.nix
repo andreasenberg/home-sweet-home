@@ -49,6 +49,10 @@
     controlcenter = {
       Bluetooth = true;
     };
+
+    NSGlobalDomain = {
+      "com.apple.swipescrolldirection" = false;
+    };
   };
 
   users.users.${username} = {
