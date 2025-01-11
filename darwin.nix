@@ -43,6 +43,8 @@
   security.pam.enableSudoTouchIdAuth = true;
 
   system.defaults = {
+    # https://www.stefanjudis.com/blog/why-i-dont-need-to-clean-up-my-desktop-and-downloads-folder-in-macos/
+    screencapture.location = "/private/tmp";
     dock = {
       autohide = true;
       tilesize = 55;
