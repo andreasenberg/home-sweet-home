@@ -45,6 +45,10 @@
       magnification = true;
       show-recents = false;
     };
+
+    controlcenter = {
+      Bluetooth = true;
+    };
   };
 
   users.users.${username} = {
