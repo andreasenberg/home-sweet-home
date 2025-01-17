@@ -181,6 +181,16 @@ in
     ];
   };
 
+  programs.starship = {
+    enable = true;
+    enableFishIntegration = true;
+    settings = {
+      package.disabled = true;
+      python.disabled = true;
+      nodejs.disabled = true;
+    };
+  };
+
   programs.helix = {
     enable = true;
     settings = {
