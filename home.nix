@@ -201,6 +201,7 @@ in
       git_state.disabled = true;
       git_metrics.disabled = true;
       git_status.disabled = true;
+      nix_shell.format = "$symbol";
       nodejs.disabled = true;
       package.disabled = true;
       python.disabled = true;
