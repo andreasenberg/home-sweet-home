@@ -43,9 +43,10 @@ in
     curl
     htop
     jq
+    nerd-fonts.hack
     nixfmt-rfc-style
     spacer
-    pkgs.nerd-fonts.hack
+    unixtools.watch
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
     # # environment:
