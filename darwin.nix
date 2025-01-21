@@ -79,6 +79,7 @@
     enable = true;
 
     casks = [
+      "docker"
       "iterm2"
       "spotify"
       "visual-studio-code"
