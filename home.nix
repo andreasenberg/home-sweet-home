@@ -142,6 +142,9 @@ in
       };
 
       ui = {
+        default-command = "log";
+        merge-editor = "vscode";
+
         default-description = ''
           JJ: If applied, this commit will...
 
