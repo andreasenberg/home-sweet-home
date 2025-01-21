@@ -41,6 +41,7 @@ in
   home.packages = with pkgs; [
     # coreutils
     curl
+    difftastic
     htop
     jq
     nerd-fonts.hack
@@ -144,6 +145,12 @@ in
       ui = {
         default-command = "log";
         merge-editor = "vscode";
+        diff.tool = [
+          "difft"
+          "--color=always"
+          "$left"
+          "$right"
+        ];
 
         default-description = ''
           JJ: If applied, this commit will...
