@@ -16,10 +16,11 @@ abbr --add gdm git diff origin/main
 abbr --add gaa git add --all
 abbr --add gam git commit -a --amend
 abbr --add gre git restore
-
 abbr --add grs git reset
 abbr --add grsh git reset HEAD^
 abbr --add wip git add --all \; git commit -m WIP -n
+
+abbr --add jjw watch -n 1 --color jj --ignore-working-copy log --color=always
 
 abbr --add cd.. cd ..
 abbr --add cd... cd ../..
