@@ -195,14 +195,15 @@ in
     enable = true;
     enableFishIntegration = true;
     settings = {
-      package.disabled = true;
-      python.disabled = true;
-      nodejs.disabled = true;
+      aws.disabled = true;
       git_branch.disabled = true;
       git_commit.disabled = true;
       git_state.disabled = true;
       git_metrics.disabled = true;
       git_status.disabled = true;
+      nodejs.disabled = true;
+      package.disabled = true;
+      python.disabled = true;
 
       # https://github.com/martinvonz/jj/wiki/Starship
       custom.jj = {
