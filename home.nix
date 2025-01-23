@@ -159,6 +159,11 @@ in
       colors = {
         timestamp = "bright black";
       };
+
+      template-aliases = {
+        # Set username instead of email because domain is reduntant.
+        "format_short_signature(signature)" = "signature.email().local()";
+      };
     };
   };
 
