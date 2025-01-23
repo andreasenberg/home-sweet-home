@@ -145,6 +145,7 @@ in
       ui = {
         default-command = "log";
         merge-editor = "vscode";
+        conflict-marker-style = "git";
         diff.tool = [
           "difft"
           "--color=always"
