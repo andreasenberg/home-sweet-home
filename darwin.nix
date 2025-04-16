@@ -11,9 +11,8 @@
   #  [
   #    pkgs.vim
   #  ];
-
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
+  # Resolve activation error, "Build user group has mismatching GID, aborting activation", due to Sequoia mig script?
+  ids.gids.nixbld = 30000;
   # nix.package = pkgs.nix;
 
   # Enable a linux builder to build linux images on Mac OS
@@ -47,7 +46,7 @@
   system.keyboard.enableKeyMapping = true;
   system.keyboard.remapCapsLockToControl = true;
 
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   system.defaults = {
     # https://www.stefanjudis.com/blog/why-i-dont-need-to-clean-up-my-desktop-and-downloads-folder-in-macos/
