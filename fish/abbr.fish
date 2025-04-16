@@ -1,3 +1,4 @@
+# Git
 abbr --add g git
 abbr --add gs git status
 abbr --add gc git commit
@@ -17,11 +18,14 @@ abbr --add gaa git add --all
 abbr --add gam git commit -a --amend
 abbr --add gre git restore
 abbr --add grs git reset
-abbr --add grsh git reset HEAD^
-abbr --add wip git add --all \; git commit -m WIP -n
+abbr --add grsh 'git reset HEAD^'
+abbr --add wip 'git add --all \; git commit -m WIP -n'
 
-abbr --add jjw watch -n 1 --color jj --ignore-working-copy log --color=always
+# Jujutsu
+abbr --add jjw 'watch -n 1 --color jj --ignore-working-copy log --color=always'
+abbr --add jjr 'jj rebase -b "all:mutable() & mine()" -d main@origin --skip-emptied'
 
+# General
 abbr --add cd.. cd ..
 abbr --add cd... cd ../..
 abbr --add cd.... cd ../../..
