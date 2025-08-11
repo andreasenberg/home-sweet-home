@@ -43,6 +43,10 @@
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
 
+  # Set "primary user"
+  system.primaryUser = "${username}";
+
+  # System configs
   system.keyboard.enableKeyMapping = true;
   system.keyboard.remapCapsLockToControl = true;
 
