@@ -146,22 +146,12 @@ in
         default-command = "log";
         merge-editor = "vscode";
         conflict-marker-style = "git";
-        diff.tool = [
+        diff-formatter = [
           "difft"
           "--color=always"
           "$left"
           "$right"
         ];
-
-        default-description = ''
-          JJ: If applied, this commit will...
-
-          JJ: Explain why this change is being made
-
-          JJ: Provide links to any relevant tickets, articles or other resources
-
-          JJ: -------------------------------------------
-        '';
       };
 
       colors = {
@@ -171,6 +161,18 @@ in
       template-aliases = {
         # Set username instead of email because domain is reduntant.
         "format_short_signature(signature)" = "signature.email().local()";
+
+        default_commit_description = ''
+          "JJ: If applied, this commit will...
+
+          JJ: Explain why this change is being made
+
+          JJ: Provide links to any relevant tickets, articles or other resources
+
+          JJ: -------------------------------------------
+
+          "
+        '';
       };
     };
   };
