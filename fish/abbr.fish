@@ -23,7 +23,7 @@ abbr --add wip 'git add --all \; git commit -m WIP -n'
 
 # Jujutsu
 abbr --add jjw 'watch -n 1 --color jj --ignore-working-copy log --color=always'
-abbr --add jjr 'jj rebase -b "all:mutable() & mine()" -d main@origin --skip-emptied'
+abbr --add jjr 'jj rebase -b "mutable() & mine()" -d main@origin --skip-emptied'
 
 # General
 abbr --add cd.. cd ..
