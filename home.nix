@@ -47,6 +47,7 @@ in
     nerd-fonts.hack
     nixfmt-rfc-style
     nodejs
+    podman
     spacer
     unixtools.watch
 
