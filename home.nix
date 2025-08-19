@@ -14,6 +14,7 @@ let
       ./fish/abbr.fish
       ./fish/homebrew.fish
       ./fish/jujutsu.fish # https://jj-vcs.github.io/jj/latest/install-and-setup/#fish
+      ./fish/podman.fish
       #(pkgs.fetchurl {
       #  url = "https://iterm2.com/shell_integration/fish";
       #  hash = "sha256-tdn4z0tIc0nC5nApGwT7GYbiY91OTA4hNXZDDQ6g9qU=";
