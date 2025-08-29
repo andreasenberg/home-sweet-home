@@ -44,6 +44,7 @@
         specialArgs = {
           inherit inputs;
           username = "aenberg";
+          nixbldGid = 30000;
         };
       };
       darwinConfigurations."andreas" = nix-darwin.lib.darwinSystem {
@@ -69,6 +70,7 @@
         specialArgs = {
           inherit inputs;
           username = "andreas";
+          nixbldGid = 350;
         };
       };
       # Expose the package set, including overlays, for convenience.

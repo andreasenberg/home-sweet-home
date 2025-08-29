@@ -2,6 +2,7 @@
   pkgs,
   inputs,
   username,
+  nixbldGid,
   ...
 }:
 {
@@ -12,7 +13,7 @@
   #    pkgs.vim
   #  ];
   # Resolve activation error, "Build user group has mismatching GID, aborting activation", due to Sequoia mig script?
-  ids.gids.nixbld = 30000;
+  ids.gids.nixbld = nixbldGid;
   # nix.package = pkgs.nix;
 
   # Enable a linux builder to build linux images on Mac OS
