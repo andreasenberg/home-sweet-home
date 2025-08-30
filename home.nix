@@ -216,6 +216,45 @@ in
     enableFishIntegration = true;
   };
 
+  programs.tmux = {
+    enable = true;
+    keyMode = "vi";
+    mouse = true;
+
+    prefix = "C-s";
+
+    terminal = "tmux-256color";
+
+    extraConfig = ''
+      unbind r
+      bind r source-file ~/.tmux.conf
+
+      set -ag terminal-overrides ",xterm-256color:RGB"
+
+      bind-key h select-pane -L
+      bind-key j select-pane -D
+      bind-key k select-pane -U
+      bind-key l select-pane -R
+
+      # Status bar
+      set-option -g status-position top
+      set -g status-style bg=default
+    '';
+
+    plugins = with pkgs; [
+      # tmuxPlugins.vim-tmux-navigator
+      {
+        plugin = tmuxPlugins.catppuccin;
+        extraConfig = ''
+          set -g @catppuccin_window_status_style "rounded"
+
+          set -g status-left ""
+          set -g status-right "#{E:@catppuccin_status_application} #{E:@catppuccin_status_session}"
+        '';
+      }
+    ];
+  };
+
   programs.helix = {
     enable = true;
     defaultEditor = true;
