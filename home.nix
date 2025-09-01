@@ -227,7 +227,7 @@ in
 
     extraConfig = ''
       unbind r
-      bind r source-file ~/.tmux.conf
+      bind r source-file ~/.config/tmux/tmux.conf
 
       set -ag terminal-overrides ",xterm-256color:RGB"
 
@@ -239,6 +239,10 @@ in
       # Status bar
       set-option -g status-position top
       set -g status-style bg=default
+
+      # Splits to use current path
+      bind-key v split-window -h -c "#{pane_current_path}"
+      bind-key b split-window -c "#{pane_current_path}"
     '';
 
     plugins = with pkgs; [
