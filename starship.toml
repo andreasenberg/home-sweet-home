@@ -10,16 +10,11 @@ $username\
 [](bg:peach fg:red)\
 $directory\
 [](bg:yellow fg:peach)\
+[](fg:yellow bg:green)\
 ${custom.git_branch}\
 ${custom.git_status}\
 ${custom.jj}\
-[](fg:yellow bg:green)\
-$c\
-$rust\
-$nodejs\
-$python\
 [](fg:green bg:sapphire)\
-$nix_shell\
 [](fg:sapphire bg:lavender)\
 $time\
 [ ](fg:lavender)\
@@ -81,62 +76,6 @@ truncation_symbol = "…/"
 # [git_status]
 # style = "bg:yellow"
 # format = '[[($all_status$ahead_behind )](fg:crust bg:yellow)]($style)'
-
-[nodejs]
-symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
-
-[c]
-symbol = " "
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
-
-[rust]
-symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
-
-[golang]
-symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
-
-[php]
-symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
-
-[java]
-symbol = " "
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
-
-[kotlin]
-symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
-
-[haskell]
-symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
-
-[python]
-symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version)(\(#$virtualenv\)) ](fg:crust bg:green)]($style)'
-
-[docker_context]
-symbol = ""
-style = "bg:sapphire"
-format = '[[ $symbol( $context) ](fg:crust bg:sapphire)]($style)'
-
-[conda]
-symbol = "  "
-style = "fg:crust bg:sapphire"
-format = '[$symbol$environment ]($style)'
-ignore_base = false
 
 [time]
 disabled = false
@@ -280,8 +219,8 @@ crust = "#181926"
 # Based on https://github.com/jj-vcs/jj/wiki/Starship#alternative-prompt
 [custom.jj]
 description = "The current jj status"
-style = "bg:yellow"
-format = '[[ $symbol $output ](fg:base bg:yellow)]($style)'
+style = "bg:green"
+format = '[[ $symbol $output ](fg:base bg:green)]($style)'
 when = "jj --ignore-working-copy root"
 symbol = "🥋"
 command = '''
@@ -312,8 +251,8 @@ disabled = true
 when = "! jj --ignore-working-copy root"
 description = "Only show git_status if we're not in a jj repo"
 command = "starship module git_status"
-style = "bg:yellow"
-format = '[[($all_status$ahead_behind )](fg:crust bg:yellow)]($style)'
+style = "bg:green"
+format = '[[($all_status$ahead_behind )](fg:crust bg:green)]($style)'
 
 
 [git_branch]
@@ -324,8 +263,8 @@ when = "! jj --ignore-working-copy root"
 description = "Only show git_branch if we're not in a jj repo"
 command = "starship module git_branch"
 symbol = ""
-style = "bg:yellow"
-format = '[[ $symbol $branch ](fg:crust bg:yellow)]($style)'
+style = "bg:green"
+format = '[[ $symbol $branch ](fg:crust bg:green)]($style)'
 
 [git_metrics]
 disabled = true
