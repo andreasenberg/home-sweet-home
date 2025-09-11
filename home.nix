@@ -90,6 +90,11 @@ in
       \set COMP_KEYWORD_CASE upper
       \set QUIET OFF
     '';
+
+    ".config/ghostty/config" = {
+      source = ./ghostty/config;
+    };
+
     ".config/starship.toml" = {
       source = ./starship.toml;
     };

@@ -84,6 +84,7 @@
 
     casks = [
       "docker"
+      "ghostty"
       "inkscape"
       "iterm2"
       "spotify"
