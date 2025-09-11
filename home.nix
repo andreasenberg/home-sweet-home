@@ -46,6 +46,7 @@ in
     htop
     jq
     nerd-fonts.hack
+    nil
     nixfmt-rfc-style
     nodejs
     podman
