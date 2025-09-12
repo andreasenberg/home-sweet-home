@@ -86,7 +86,6 @@
       "docker"
       "ghostty"
       "inkscape"
-      "iterm2"
       "spotify"
       "visual-studio-code"
     ];
