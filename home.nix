@@ -234,6 +234,9 @@ in
 
       set -ag terminal-overrides ",xterm-256color:RGB"
 
+      # Adjusting as a way to get rid of latency when switching between modes in Helix
+      set -s escape-time 50  # ~5-100 https://superuser.com/a/1809494
+
       bind-key h select-pane -L
       bind-key j select-pane -D
       bind-key k select-pane -U
