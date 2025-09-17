@@ -86,7 +86,6 @@
     onActivation.cleanup = "uninstall";
 
     casks = [
-      "docker"
       "ghostty"
       "inkscape"
       "spotify"
