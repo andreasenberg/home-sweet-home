@@ -122,6 +122,8 @@ in
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   programs.direnv.enable = true;
+  programs.fzf.enable = true;
+
   programs.git = {
     enable = true;
     aliases = {
