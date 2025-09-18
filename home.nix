@@ -47,6 +47,7 @@ in
     nodejs
     podman
     ripgrep
+    shellcheck
     skopeo
     spacer
     unixtools.watch
