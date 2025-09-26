@@ -46,6 +46,7 @@ in
     nixfmt-rfc-style
     nodejs
     podman
+    ripgrep
     skopeo
     spacer
     unixtools.watch
