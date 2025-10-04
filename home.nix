@@ -39,6 +39,7 @@ in
     # coreutils
     curl
     difftastic
+    fd
     htop
     jq
     nerd-fonts.hack
