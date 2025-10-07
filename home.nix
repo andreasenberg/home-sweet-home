@@ -17,6 +17,11 @@ let
       ./fish/podman.fish
     ]
   );
+
+  catppuccin-k9s = builtins.fetchGit {
+    url = "https://github.com/catppuccin/k9s.git";
+    rev = "4432383da214face855a873d61d2aa914084ffa2";
+  };
 in
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -98,6 +103,10 @@ in
     ".config/starship.toml" = {
       source = ./starship.toml;
     };
+
+    "Library/Application Support/k9s/skins/catppuccin-mocha.yaml" = {
+      source = "${catppuccin-k9s}/dist/catppuccin-mocha.yaml";
+    };
   };
 
   # Home Manager can also manage your environment variables through
@@ -119,6 +128,7 @@ in
   home.sessionVariables = {
     # EDITOR = "emacs";
     LANG = "en_US.UTF-8";
+    K9S_SKIN = "catppuccin-mocha";
   };
 
   # Let Home Manager install and manage itself.
