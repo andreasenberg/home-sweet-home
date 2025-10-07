@@ -253,6 +253,10 @@ in
       # Splits to use current path
       bind-key v split-window -h -c "#{pane_current_path}"
       bind-key b split-window -c "#{pane_current_path}"
+
+      # Custom rename format to have tmux set the path if a regular shell (fish)
+      # If will show the command if something is executed and the custom window name if that is set (handled by #W)
+      set -g automatic-rename-format "#{?#{==:#{pane_current_command},fish},#{s|$HOME|~|:pane_current_path},#{pane_current_command}}"
     '';
 
     plugins = with pkgs; [
@@ -262,6 +266,7 @@ in
         extraConfig = ''
           set -g @catppuccin_window_default_text " #W"
           set -g @catppuccin_window_current_text " #W"
+          set -g @catppuccin_window_text " #W"
           set -g @catppuccin_window_status_style "rounded"
 
           set -g status-left ""
