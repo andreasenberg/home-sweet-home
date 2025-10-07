@@ -248,7 +248,6 @@ in
 
       # Status bar
       set-option -g status-position top
-      set -g status-style bg=default
 
       # Splits to use current path
       bind-key v split-window -h -c "#{pane_current_path}"
