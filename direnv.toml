@@ -1,0 +1,4 @@
+[global]
+# Fix direnv colors, e.g. warnings when a reload of the nix environment is required
+# https://github.com/nix-community/nix-direnv/pull/560
+log_format = "direnv: %s"

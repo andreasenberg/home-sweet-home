@@ -104,6 +104,10 @@ in
       source = ./starship.toml;
     };
 
+    ".config/direnv/direnv.toml" = {
+      source = ./direnv.toml;
+    };
+
     "Library/Application Support/k9s/skins/catppuccin-mocha.yaml" = {
       source = "${catppuccin-k9s}/dist/catppuccin-mocha.yaml";
     };
