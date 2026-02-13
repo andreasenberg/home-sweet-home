@@ -142,16 +142,7 @@ in
 
   programs.git = {
     enable = true;
-    aliases = {
-      co = "checkout";
-      br = "branch";
-      st = "status";
-      cmt = "commit";
-      unstage = "restore --staged --";
-      recent = "!git branch --sort=-committerdate | head -n10";
-    };
-
-    extraConfig = {
+    settings = {
       pull.ff = true;
       pull.rebase = true;
 
@@ -159,6 +150,14 @@ in
 
       # Show latest active branch at the top
       branch.sort = "-committerdate";
+      aliases = {
+        co = "checkout";
+        br = "branch";
+        st = "status";
+        cmt = "commit";
+        unstage = "restore --staged --";
+        recent = "!git branch --sort=-committerdate | head -n10";
+      };
     };
   };
 
