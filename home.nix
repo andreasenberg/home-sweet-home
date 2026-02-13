@@ -49,7 +49,7 @@ in
     jq
     nerd-fonts.hack
     nil
-    nixfmt-rfc-style
+    nixfmt
     nodejs
     podman
     ripgrep
@@ -327,7 +327,7 @@ in
         {
           name = "nix";
           auto-format = true;
-          formatter.command = lib.getExe pkgs.nixfmt-rfc-style;
+          formatter.command = lib.getExe pkgs.nixfmt;
         }
         {
           name = "python";
