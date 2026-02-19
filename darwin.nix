@@ -18,9 +18,9 @@
 
   # Enable a linux builder to build linux images on Mac OS
   nix.linux-builder = {
-    enable = true;
+    enable = false;
     ephemeral = true; # wipe the builder’s filesystem on every restart
-    config.virtualisation.cores = 6;
+    config.virtualisation.cores = 4;
   };
 
   # Necessary for using flakes on this system.
