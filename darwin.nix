@@ -25,6 +25,7 @@
 
   # Necessary for using flakes on this system.
   nix.settings = {
+    extra-platforms = [ "aarch64-linux" ];
     trusted-users = [
       "root"
       "${username}"
