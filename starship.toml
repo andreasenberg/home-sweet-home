@@ -24,6 +24,8 @@ $character"""
 
 palette = 'catppuccin_mocha'
 
+command_timeout = 1000 # Increased to mitigate command timeouts, e.g. after hibernation
+
 [os]
 disabled = true
 style = "bg:red fg:crust"
@@ -58,7 +60,7 @@ format = '[ $user]($style)'
 [directory]
 style = "bg:peach fg:crust"
 format = "[ $path ]($style)"
-truncation_length = 3
+truncation_length = 2
 truncation_symbol = "…/"
 
 [directory.substitutions]
@@ -238,7 +240,7 @@ jj log --revisions @ --no-graph --ignore-working-copy --limit 1 --template '
     if(empty, "(empty)"),
     coalesce(
       truncate_end(29, description.first_line(), "…"),
-      "(no description set)",
+      "(no desc)",
     ),
   )
 '
