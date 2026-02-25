@@ -265,6 +265,9 @@ in
       bind-key k select-pane -U
       bind-key l select-pane -R
 
+      # Open new window at current path
+      bind c new-window -c "#{pane_current_path}"
+
       # Status bar
       set-option -g status-position top
 
