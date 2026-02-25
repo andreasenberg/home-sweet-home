@@ -104,10 +104,6 @@ in
       source = ./ghostty/config;
     };
 
-    ".config/starship.toml" = {
-      source = ./starship.toml;
-    };
-
     ".config/zed/settings.json" = {
       source = ./zed/settings.json;
       force = true;
@@ -240,6 +236,7 @@ in
   programs.starship = {
     enable = true;
     enableFishIntegration = true;
+    settings = builtins.fromTOML (builtins.readFile ./starship.toml);
   };
 
   programs.tmux = {
