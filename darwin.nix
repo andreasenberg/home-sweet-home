@@ -91,6 +91,7 @@
       "inkscape"
       "spotify"
       "visual-studio-code"
+      "zed"
     ];
   };
 }

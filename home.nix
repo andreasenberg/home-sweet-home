@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   lib,
   username,
@@ -96,6 +95,11 @@ in
       \set QUIET OFF
     '';
 
+    # Source config files
+    ".config/direnv/direnv.toml" = {
+      source = ./direnv.toml;
+    };
+
     ".config/ghostty/config" = {
       source = ./ghostty/config;
     };
@@ -104,8 +108,9 @@ in
       source = ./starship.toml;
     };
 
-    ".config/direnv/direnv.toml" = {
-      source = ./direnv.toml;
+    ".config/zed/settings.json" = {
+      source = ./zed/settings.json;
+      force = true;
     };
 
     "Library/Application Support/k9s/skins/catppuccin-mocha.yaml" = {
