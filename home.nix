@@ -109,6 +109,11 @@ in
       force = true;
     };
 
+    ".config/zed/keymap.json" = {
+      source = ./zed/keymap.json;
+      force = true;
+    };
+
     "Library/Application Support/k9s/skins/catppuccin-mocha.yaml" = {
       source = "${catppuccin-k9s}/dist/catppuccin-mocha.yaml";
     };

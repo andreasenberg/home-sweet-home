@@ -8,7 +8,7 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "buffer_font_family": "Hack Nerd Font",
-  "buffer_font_size": 14,
+  "buffer_font_size": 12,
   "cursor_blink": false,
   "formatter": "language_server",
   "disable_ai": true,
