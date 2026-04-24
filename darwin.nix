@@ -1,6 +1,6 @@
 {
   pkgs,
-  inputs,
+  configRevision,
   username,
   nixbldGid,
   ...
@@ -36,7 +36,7 @@
   # programs.fish.enable = true;
 
   # Set Git commit hash for darwin-version.
-  system.configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
+  system.configurationRevision = configRevision;
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
