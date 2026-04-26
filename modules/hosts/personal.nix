@@ -17,6 +17,7 @@
         };
         home-manager.users."andreas" = import ../../home.nix;
       }
+      { homebrew.casks = [ "steam" ]; }
     ]
     ++ (builtins.attrValues inputs.self.darwinModules);
   };
