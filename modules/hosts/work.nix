@@ -8,7 +8,6 @@
       configRevision = inputs.self.rev or inputs.self.dirtyRev or null;
     };
     modules = [
-      ../../darwin.nix
       inputs.home-manager.darwinModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
@@ -18,6 +17,7 @@
         };
         home-manager.users."aenberg" = import ../../home.nix;
       }
-    ];
+    ]
+    ++ (builtins.attrValues inputs.self.darwinModules);
   };
 }

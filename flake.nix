@@ -21,6 +21,7 @@
     inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
+        ./options.nix
         inputs.nix-darwin.flakeModules.default # activate flake.darwinModules
         inputs.home-manager.flakeModules.default # activate flake.homeModules
         (inputs.import-tree ./modules)
