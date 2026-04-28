@@ -12,10 +12,10 @@
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = {
-          username = "aenberg";
+        home-manager.users."aenberg" = {
+          imports = builtins.attrValues inputs.self.homeModules;
+          home.username = "aenberg";
         };
-        home-manager.users."aenberg" = import ../../home.nix;
       }
     ]
     ++ (builtins.attrValues inputs.self.darwinModules);

@@ -12,11 +12,12 @@
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = {
-          username = "andreas";
+        home-manager.users."andreas" = {
+          imports = builtins.attrValues inputs.self.homeModules;
+          home.username = "andreas";
         };
-        home-manager.users."andreas" = import ../../home.nix;
       }
+      # Append casks to defaults in homebrew module
       { homebrew.casks = [ "steam" ]; }
     ]
     ++ (builtins.attrValues inputs.self.darwinModules);
