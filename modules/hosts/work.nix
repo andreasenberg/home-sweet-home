@@ -12,10 +12,13 @@
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.users."aenberg" = {
-          imports = builtins.attrValues inputs.self.homeModules;
-          home.username = "aenberg";
-        };
+        home-manager.users."aenberg" =
+          { config, ... }:
+          {
+            imports = builtins.attrValues inputs.self.homeModules;
+            home.username = "aenberg";
+            dotfiles.repoPath = "${config.home.homeDirectory}/.config/nix-darwin";
+          };
       }
     ]
     ++ (builtins.attrValues inputs.self.darwinModules);

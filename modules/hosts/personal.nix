@@ -12,10 +12,13 @@
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.users."andreas" = {
-          imports = builtins.attrValues inputs.self.homeModules;
-          home.username = "andreas";
-        };
+        home-manager.users."andreas" =
+          { config, ... }:
+          {
+            imports = builtins.attrValues inputs.self.homeModules;
+            home.username = "andreas";
+            dotfiles.repoPath = "${config.home.homeDirectory}/.config/nix-darwin";
+          };
       }
       # Append casks to defaults in homebrew module
       { homebrew.casks = [ "steam" ]; }
